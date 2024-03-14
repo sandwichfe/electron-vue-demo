@@ -23,7 +23,7 @@
           <div class="title alt">Other Documentation</div>
           <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
           <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
-          <button class="alt" @click="testSqlite()">test</button>
+          <button class="alt" @click="testSqlite()">test11</button>
         </div>
       </div>
     </main>
@@ -32,6 +32,7 @@
 
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
+  import { queryAllProduct, insertProduct } from '../../utils/db'
 
   export default {
     name: 'landing-page',
@@ -41,7 +42,9 @@
         this.$electron.shell.openExternal(link)
       },
       testSqlite(){
-          console.log("gre");
+        queryAllProduct().then(data => {
+      console.log(data)
+    })
 
       }
     }
